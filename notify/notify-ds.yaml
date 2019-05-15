@@ -1,0 +1,49 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: eks-notify
+  namespace: kube-system
+spec:
+  replicas: 1
+  selector:
+   matchLabels:
+    app: eks-notify
+  template:
+    metadata:
+      labels:
+        app: eks-notify
+    spec:
+      containers:
+      - name: eks-notify
+        image: REGISTRY_URL/eks-traefik-notify:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: env-configmap
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-configmap
+  namespace: kube-system
+data:
+  HOST_TRAEFIK: http://traefik-ingress-service:8080
+  ACCESS_KEY: YOUR_ACCESS_KEY
+  SECRET_KEY: YOUR_SECRET_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: eks-notify
+  name: eks-notify
+  namespace: kube-system
+spec:
+  ports:
+    - port: 8080
+  selector:
+    app: eks-notify
+  type: ClusterIP
+
