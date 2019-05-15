@@ -1,3 +1,21 @@
+# Updated
+
+## Módulo "notify"
+* Módulo para ler as alterações dos Frontends no Traefik e registrá-los no DynamoDB.
+
+### Compilando módulo
+* Configurar URL de um registry no arquivo *Makefile*.
+* Executar comando `make all`.
+
+### Aplicando deployment no Kubernetes
+* Substituir no arquivo *notify-ds.yaml* as variáveis:
+   * *REGISTRY_URL*: URL do registry onde está a imagem do módulo compilado.
+   * *YOUR_ACCESS_KEY*: Chave para acessar a tabela do DynamoDB.
+   * *YOUR_SECRET_KEY*: Chave para acessar a tabela do DynamoDB.
+
+---
+* Before Forked
+
 # Configurando o Traefik no Cluster Kubernetes
 
 ### Cenário:
