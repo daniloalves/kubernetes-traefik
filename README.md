@@ -13,6 +13,10 @@
    * *YOUR_ACCESS_KEY*: Chave para acessar a tabela do DynamoDB.
    * *YOUR_SECRET_KEY*: Chave para acessar a tabela do DynamoDB.
 
+## Úteis
+* Comando para subir Pods no master (**não estou recomendando que faça isso!**):
+  * `kubectl taint nodes --all node-role.kubernetes.io/master-`
+
 ---
 * Before Forked
 
