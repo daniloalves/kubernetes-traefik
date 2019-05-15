@@ -16,6 +16,8 @@
 ## Úteis
 * Comando para subir Pods no master (**não estou recomendando que faça isso!**):
   * `kubectl taint nodes --all node-role.kubernetes.io/master-`
+* Configurando auto-completion:
+  * https://kubernetes.io/docs/tasks/tools/install-kubectl/#enabling-shell-autocompletion
 
 ---
 * Before Forked
